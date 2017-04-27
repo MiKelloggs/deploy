@@ -2,7 +2,7 @@ import sys
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from urllib.parse import urlparse, parse_qs
-from deploy_database import GlassDB
+from server.py import GlassDB
 
 fw = open('database.txt', 'w')
 fw.write("testing 1i23")
