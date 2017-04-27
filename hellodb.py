@@ -1,7 +1,8 @@
-import sqlite3
+import sys
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-from urllib.parse import parse_qs
+from urllib.parse import urlparse, parse_qs
+from deploy_database import GlassDB
 
 fw = open('database.txt', 'w')
 fw.write("testing 1i23")
@@ -122,6 +123,9 @@ class httpServerRequsetHandler(BaseHTTPRequestHandler):
                 else:
                     self.handle404()
 
+        def createGlassTable(self):
+
+
 
         def handle404(self):
             self.send_response(404)
@@ -142,10 +146,15 @@ def dict_factory(cursor, row):
 
 def main():
     db = GlassDB()
+    db.createGlassTable()
     rows = db.getGlass()
     print(json.dumps(rows))
 
-    listen = ("127.0.0.1", 8080)
+    port = 8080
+    if len(sys.argv) > 1:
+        port = int(sys.argv[1])
+
+    listen = ("0.0.0.0", port)
     server = HTTPServer(listen, httpServerRequsetHandler)
 
     print("Listening...")
