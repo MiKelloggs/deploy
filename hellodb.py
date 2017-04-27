@@ -142,10 +142,19 @@ class GlassDB:
         url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
 
 
-        self.connection = psycopg2.connect(url)
         self.connection.row_factory = dict_factory
+
+
+        self.connection = psycopg2.connect(
+            cursor_factory=psycopg2.extras.RealDictCursor,
+            database=url.path[1:],
+            user=url.username,
+            password=url.password,
+            host=url.hostname,
+            port=url.port
+        )
+
         self.cursor = self.connection.cursor()
-        return
 
     def __del__(self):
         self.connection.close()
