@@ -127,12 +127,12 @@ class httpServerRequsetHandler(BaseHTTPRequestHandler):
 
 
 
-        def handle404(self):
-            self.send_response(404)
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.send_header("Content-type", "text/html")#name of header and value
-            self.end_headers()
-            self.wfile.write(bytes("<strong>Not Found</strong>", "utf-8")) #dont write just a string, http doesnt understand ordinary strings.
+            def handle404(self):
+                self.send_response(404)
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_header("Content-type", "text/html")#name of header and value
+                self.end_headers()
+                self.wfile.write(bytes("<strong>Not Found</strong>", "utf-8")) #dont write just a string, http doesnt understand ordinary strings.
 
 
 
