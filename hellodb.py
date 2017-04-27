@@ -7,7 +7,7 @@ class SquirrelDB:
 
     def __init__(self):
         urllib.parse.uses_netloc.append("postgres")
-        url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
+        url = urllib.parse.urlparse(os.environ["http://mkorologos.com/3200/Deploy/glass.db"])
 
         self.connection = psycopg2.connect(
             cursor_factory=psycopg2.extras.RealDictCursor,
