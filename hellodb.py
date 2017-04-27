@@ -139,7 +139,7 @@ class GlassDB:
 
     def __init__(self):
         urllib.parse.uses_netloc.append("postgres")
-        url = urllib.parse.urlparse(os.environ["http://mkorologos.com/3200/Deploy/glass.db"])
+        url = urllib.parse.urlparse(os.environ("http://mkorologos.com/3200/Deploy/glass.db"))
 
 
         self.connection = psycopg2.connect(url)
