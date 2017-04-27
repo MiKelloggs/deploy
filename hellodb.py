@@ -2,6 +2,10 @@ import sys
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from urllib.parse import urlparse, parse_qs
+import os
+import psycopg2
+import psycopg2.extras
+import urllib.parse
 
 fw = open('database.txt', 'w')
 fw.write("testing 1i23")
@@ -129,10 +133,7 @@ class httpServerRequsetHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes("<strong>Not Found</strong>", "utf-8")) #dont write just a string, http doesnt understand ordinary strings.
 
-import os
-import psycopg2
-import psycopg2.extras
-import urllib.parse
+
 
 class GlassDB:
 
