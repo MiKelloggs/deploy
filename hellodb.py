@@ -153,7 +153,7 @@ class GlassDB:
             host=url.hostname,
             port=url.port
         )
-        return
+        self.cursor = self.connection.cursor()
 
     def __del__(self):
         self.connection.close()
